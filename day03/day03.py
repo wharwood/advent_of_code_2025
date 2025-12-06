@@ -29,14 +29,11 @@ class BatteryBank:
 
     def get_max_joltage(self, cell_qty: int) -> int:
         stack = []
-        drop = len(self.cells) - cell_qty  # how many digits we are allowed to drop
-        
+        drop = len(self.cells) - cell_qty
         for n in self.cells:
             while drop and stack and stack[-1] < n:
                 stack.pop()
                 drop -= 1
             stack.append(n)
-        
-        # Only take k digits (stack may be longer)
         result = stack[:cell_qty]
         return int("".join(map(str, result)))
