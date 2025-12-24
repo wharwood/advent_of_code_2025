@@ -97,38 +97,3 @@ class grid(Generic[T]):
             if n.x+1 == node.x and n.y == node.y:
                 return n
         return None
-    
-class grid_node_3d():
-    def __init__(self, x: int, y: int, z: int) -> None:
-        self.x = x
-        self.y = y
-        self.z = z
-
-    def __repr__(self) -> str:
-        return f"({self.x}, {self.y}, {self.z})"
-    
-class grid_3d(Generic[T]):
-    def __init__(
-        self, 
-        nodes: Optional[Iterable[T]] = None, 
-        limits: Optional[tuple[int,int,int,int,int,int]] = None
-    ) -> None:
-        self.nodes: list[T] = list(nodes) if nodes is not None else []
-        self.bounds = None
-        if limits is not None:
-            self.bounds = grid_3d.bounds_3d(limits[0], limits[1], limits[2], limits[3], limits[4], limits[5])
-
-    class bounds_3d:
-        def __init__(self, x_min: int, x_max: int, y_min: int, y_max: int, z_min: int, z_max: int) -> None:
-            self.x_min = x_min
-            self.x_max = x_max
-            self.y_min = y_min
-            self.y_max = y_max
-            self.z_min = z_min
-            self.z_max = z_max
-
-        def __str__(self) -> str:
-            return f"({self.x_min}, {self.x_max}, {self.y_min}, {self.y_max}, {self.z_min}, {self.z_max})"
-        
-    def is_in_grid(self, node: grid_node_3d) -> bool:
-        return any(node.x == n.x and node.y == n.y and node.z == n.z for n in self.nodes)
