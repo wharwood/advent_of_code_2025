@@ -14,11 +14,11 @@ class grid_node():
 class grid(Generic[T]):
     def __init__(self, nodes: Optional[Iterable[T]] = None, limits: Optional[tuple[int, int, int, int]] = None) -> None:
         self.nodes: list[T] = list(nodes) if nodes is not None else []
-        self.bounds = None
+        self.grid_bounds = None
         if limits is not None:
-            self.bounds = grid.Bounds(limits[0], limits[1], limits[2], limits[3])
+            self.grid_bounds = grid.bounds(limits[0], limits[1], limits[2], limits[3])
     
-    class Bounds:
+    class bounds:
         def __init__(self, x_min: int, x_max: int, y_min: int, y_max: int) -> None:
             self.x_min = x_min
             self.x_max = x_max
