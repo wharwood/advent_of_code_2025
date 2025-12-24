@@ -1,5 +1,5 @@
 from __future__ import annotations
-from src import grid
+from .grid import grid, grid_node
 
 def do_part_1(input_lines: list[str]) -> int:
     grid = make_factory(input_lines)
@@ -36,7 +36,7 @@ def make_factory(input_lines) -> paper_factory_grid:
             nodes.append(paper_factory_node(x, y, char))
     return paper_factory_grid(nodes)
 
-class paper_factory_node(grid.grid_node):
+class paper_factory_node(grid_node):
     def __init__(self, x: int, y: int, contents: str) -> None:
         super().__init__(x, y)
         if contents not in ['.', '@']:
@@ -46,7 +46,7 @@ class paper_factory_node(grid.grid_node):
     def is_paper(self) -> bool:
         return self.contents == '@'
     
-class paper_factory_grid(grid.grid[paper_factory_node]):
+class paper_factory_grid(grid[paper_factory_node]):
     def __init__(self, nodes: list[paper_factory_node]) -> None:
         super().__init__(nodes)
 

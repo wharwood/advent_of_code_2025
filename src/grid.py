@@ -8,6 +8,9 @@ class grid_node():
         self.x = x
         self.y = y
 
+    def __repr__(self) -> str:
+        return f"({self.x}, {self.y})"
+
 class grid(Generic[T]):
     def __init__(self, nodes: Optional[Iterable[T]] = None, limits: Optional[tuple[int, int, int, int]] = None) -> None:
         self.nodes: list[T] = list(nodes) if nodes is not None else []
