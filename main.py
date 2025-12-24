@@ -1,49 +1,30 @@
-from day01 import day01
-from day02 import day02
-from day03 import day03
-from helpers import helpers
+from src import day01
+from src import day02
+from src import day03
+from src import day04
+from src import day05
+from src import day06
+from src.helpers import helpers
 
-# input_lines = helpers.parse_input("day01/input.txt")
-# day01.do_part_1(input_lines)
-# day01.do_part_2(input_lines)
-# input_lines = helpers.parse_input("day02/input.txt")
-# day02.do_part_1(input_lines)
-# day02.do_part_2(input_lines)
-input_lines = helpers.parse_input("day03/input.txt")
-day03.do_part_1(input_lines)
-day03.do_part_2(input_lines)
-# input_lines = helpers.parse_input("day03/input.txt")
-# day03.do_part_1(input_lines)
-# input_lines = helpers.parse_input("day04/input.txt")
-# day04.do_part_1(input_lines)
-# day04.do_part_2(input_lines)
-# input_lines = helpers.parse_input("day05/input.txt")
-# day05.do_part_1(input_lines)
-# day05.do_part_2(input_lines)
-# input_lines = helpers.parse_input("day06/input.txt")
-# day06.do_part_1(input_lines)
-# day06.do_part_2(input_lines)
-# input_lines = helpers.parse_input("day07/input.txt")
-# day07.do_part_1(input_lines)
-# day07.do_part_2(input_lines)
-# input_lines = helpers.parse_input("day08/input.txt")
-# day08.do_part_1(input_lines)
-# day08.do_part_2(input_lines)
-# input_lines = helpers.parse_input("day09/input.txt")
-# day09.do_part_1(input_lines)
-# day09.do_part_2(input_lines)
-# input_lines = helpers.parse_input("day10/input.txt")
-# day10.do_part_1(input_lines)
-# day10.do_part_2(input_lines)
-# input_lines = helpers.parse_input("day11/input.txt")
-# day11.do_part_1(input_lines)
-# day11.do_part_2(input_lines)
-# input_lines = helpers.parse_input("day12/input.txt")
-# day12.do_part_1(input_lines)
-# day12.do_part_2(input_lines)
-# input_lines = helpers.parse_input("day13/example1.txt")
-# day13.do_part_1(input_lines)
-# day13.do_part_2(input_lines)
-# input_lines = helpers.parse_input("day14/example1.txt")
-# day14.do_part_1(input_lines)
-# day14.do_part_2(input_lines)
+from pathlib import Path
+
+def main():
+    for day_module, day_number in [
+        (day01, "01"),
+        (day02, "02"),
+        (day03, "03"),
+        (day04, "04"),
+        (day05, "05"),
+        (day06, "06"),
+    ]:
+        file_path = Path(f"./input/day{day_number}_input.txt")
+        input_lines = helpers.parse_input(file_path)
+
+        part_1_result = day_module.do_part_1(input_lines)
+        print(f"Day {day_number} - Part 1: {part_1_result}")
+
+        part_2_result = day_module.do_part_2(input_lines)
+        print(f"Day {day_number} - Part 2: {part_2_result}")
+
+if __name__ == "__main__":
+    main()
