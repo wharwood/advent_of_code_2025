@@ -4,6 +4,7 @@ from src import day03
 from src import day04
 from src import day05
 from src import day06
+from src import day07
 from src.helpers import helpers
 
 from pathlib import Path
@@ -24,6 +25,7 @@ def main(selected_day=None, use_example=False):
         "04": day04,
         "05": day05,
         "06": day06,
+        "07": day07,
         }
     
     args = parse_args()
