@@ -13,9 +13,10 @@ from types import ModuleType
 def parse_args():
     parser = argparse.ArgumentParser(description="Run Advent of Code solutions.")
     parser.add_argument("-d", "--day", nargs="*", help="Day number to run. If not provided, runs all days.")
+    parser.add_argument("-e", "--example", action="store_true", help="Use example input instead of actual input.")
     return parser.parse_args()
 
-def main(selected_day=None):
+def main(selected_day=None, use_example=False):
     day_map: dict[str, ModuleType] = {
         "01": day01,
         "02": day02,
@@ -38,8 +39,12 @@ def main(selected_day=None):
         if day_module is None:
             raise ValueError(f"No module found for day {day_number}")
             continue
+    
+        if use_example or args.example:
+            file_path = Path(f"./tests/day{day_number}_example.txt")
+        else:
+            file_path = Path(f"./input/day{day_number}_input.txt")
 
-        file_path = Path(f"./input/day{day_number}_input.txt")
         input_lines = helpers.parse_input(file_path)
 
         part_1_result = day_module.do_part_1(input_lines)
