@@ -75,8 +75,8 @@ class tachyon_grid(grid):
             if current_node.contents not in ('.', 'S', '^'):
                 return 0
 
-            below = self.get_node_down(current_node)
-            if below is None:
+            below_node = self.get_node_down(current_node)
+            if below_node is None:
                 return 1
 
             if current_node.contents == '^':
@@ -90,6 +90,6 @@ class tachyon_grid(grid):
                 return total
 
             # normal beam: continue down
-            return count_from((below.x, below.y))
+            return count_from((below_node.x, below_node.y))
 
         return count_from((start.x, start.y))
