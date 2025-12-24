@@ -1,7 +1,7 @@
 from __future__ import annotations
-import grid
+from src import grid
 
-def do_part_1(input_lines):
+def do_part_1(input_lines: list[str]) -> int:
     grid = make_factory(input_lines)
     accessible_count = 0
     for node in grid.nodes:
@@ -9,14 +9,13 @@ def do_part_1(input_lines):
             continue
         if grid.is_accessible(node):
             accessible_count += 1
-    print(f"Forklift accessible rolls: {accessible_count}")
+    return accessible_count
 
-def do_part_2(input_lines):
+def do_part_2(input_lines: list[str]) -> int:
     grid = make_factory(input_lines)
     accessible_count = 0
     iteration = 0
     while True:
-        print(f"Starting iteration {iteration}")
         iteration += 1
         accessible_nodes = []
         for node in grid.nodes:
@@ -28,7 +27,7 @@ def do_part_2(input_lines):
             break
         accessible_count += len(accessible_nodes)
         grid.remove_paper(accessible_nodes)
-    print(f"Removed rolls: {accessible_count}")
+    return accessible_count
 
 def make_factory(input_lines) -> paper_factory_grid:
     nodes: list[paper_factory_node] = []

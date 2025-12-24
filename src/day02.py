@@ -5,7 +5,7 @@ def do_part_1(input_lines):
         for num in range(r[0], r[1] + 1):
             if is_two_repeated_digits(num):
                 sum += num
-    print(f"Sum of invalid inputs: {sum}")
+    return sum
 
 def do_part_2(input_lines):
     ranges = get_ranges(input_lines)
@@ -14,7 +14,7 @@ def do_part_2(input_lines):
         for num in range(r[0], r[1] + 1):
             if is_any_repeated_digits(num):
                 sum += num
-    print(f"Sum of invalid inputs: {sum}")
+    return sum
 
 def get_ranges(input_lines) -> list[tuple[int, int]]:
     result = []

@@ -1,4 +1,4 @@
-def do_part_1(input_lines):
+def do_part_1(input_lines: list[str]) -> int:
     banks: list[BatteryBank] = []
     for line in input_lines:
         bank = BatteryBank()
@@ -7,9 +7,9 @@ def do_part_1(input_lines):
     result = 0
     for bank in banks:
         result += bank.get_max_joltage(2)
-    print(f"Max joltage: {result}")
+    return result
 
-def do_part_2(input_lines):
+def do_part_2(input_lines: list[str]) -> int:
     banks: list[BatteryBank] = []
     for line in input_lines:
         bank = BatteryBank()
@@ -18,7 +18,7 @@ def do_part_2(input_lines):
     result = 0
     for bank in banks:
         result += bank.get_max_joltage(12)
-    print(f"Max joltage: {result}")
+    return result
 
 class BatteryBank:
     def __init__(self, cells: list[int] = []):

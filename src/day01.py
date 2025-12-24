@@ -1,4 +1,4 @@
-def do_part_1(input_lines):
+def do_part_1(input_lines: list[str]) -> int:
     start = 50
     zeros = 0
     while True:
@@ -10,9 +10,9 @@ def do_part_1(input_lines):
                 zeros += 1
             start = end
         break
-    print(f"Zeros: {zeros}")
+    return zeros
 
-def do_part_2(input_lines):
+def do_part_2(input_lines: list[str]) -> int:
     start = 50
     zeros = 0
     moves = get_moves(input_lines)
@@ -26,7 +26,7 @@ def do_part_2(input_lines):
         start = start % 100
         if start == 0:
             zeros += 1
-    print(f"Zeros: {zeros}")
+    return zeros
 
 def do_rotation(start: int, direction: str, count: int) -> int:
     if direction == "R":

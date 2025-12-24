@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-def do_part_1(input_lines):
+def do_part_1(input_lines: list[str]) -> int:
     fresh_count = 0
     fresh_ingredients, ingredients = parse_input(input_lines)
     fresh_ranges = [IntegerRange(start, end) for start, end in fresh_ingredients]
@@ -14,13 +14,13 @@ def do_part_1(input_lines):
                 break
         if is_fresh:
             fresh_count += 1
-    print(f"Fresh ingredients: {fresh_count}")
+    return fresh_count
 
-def do_part_2(input_lines):
+def do_part_2(input_lines: list[str]) -> int:
     fresh_ingredients, _ = parse_input(input_lines)
     fresh_ranges = [IntegerRange(start, end) for start, end in fresh_ingredients]
     fresh_ranges = merge_ranges(fresh_ranges)
-    print(f"Fresh ids: {sum(r.len() for r in fresh_ranges)}")
+    return sum(r.len() for r in fresh_ranges)
 
 def parse_input(lines: list[str]) -> tuple[list[tuple[int,int]], list[int]]:
     start = True
