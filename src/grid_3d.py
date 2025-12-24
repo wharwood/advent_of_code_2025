@@ -43,3 +43,10 @@ class grid_3d(Generic[T]):
         for node in self.nodes:
             if closest_neighbors is {}:
                 closest_neighbors[node] = self.get_distance(node, node)
+            else:
+                distance = self.get_distance(node, node)
+                if distance < min(closest_neighbors.values()):
+                    closest_neighbors = {node: distance}
+                elif distance == min(closest_neighbors.values()):
+                    closest_neighbors[node] = distance
+        return list(closest_neighbors.keys())
