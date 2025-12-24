@@ -27,6 +27,7 @@ def parse_input(lines: list[str]) -> tuple[list[tuple[int,int]], list[int]]:
     fresh_ingredients: list[tuple[int,int]] = []
     ingredient_ids: list[int] = []
     for line in lines:
+        line = line.rstrip()
         if line == "":
             start = False
             continue

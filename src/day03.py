@@ -25,7 +25,7 @@ class BatteryBank:
         self.cells = cells
 
     def parse_cell_str(self, cell_str: str):
-        self.cells = [int(c) for c in cell_str]
+        self.cells = [int(c) for c in cell_str if c.isdigit()]
 
     def get_max_joltage(self, cell_qty: int) -> int:
         stack = []

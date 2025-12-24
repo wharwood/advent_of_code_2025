@@ -32,7 +32,7 @@ def do_part_2(input_lines: list[str]) -> int:
 def make_factory(input_lines) -> paper_factory_grid:
     nodes: list[paper_factory_node] = []
     for y, line in enumerate(input_lines):
-        for x, char in enumerate(line):
+        for x, char in enumerate(line.rstrip()):
             nodes.append(paper_factory_node(x, y, char))
     return paper_factory_grid(nodes)
 
