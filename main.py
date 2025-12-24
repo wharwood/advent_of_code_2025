@@ -7,16 +7,38 @@ from src import day06
 from src.helpers import helpers
 
 from pathlib import Path
+import argparse
+from types import ModuleType
 
-def main():
-    for day_module, day_number in [
-        (day01, "01"),
-        (day02, "02"),
-        (day03, "03"),
-        (day04, "04"),
-        (day05, "05"),
-        (day06, "06"),
-    ]:
+def parse_args():
+    parser = argparse.ArgumentParser(description="Run Advent of Code solutions.")
+    parser.add_argument("-d", "--day", nargs="*", help="Day number to run. If not provided, runs all days.")
+    return parser.parse_args()
+
+def main(selected_day=None):
+    day_map: dict[str, ModuleType] = {
+        "01": day01,
+        "02": day02,
+        "03": day03,
+        "04": day04,
+        "05": day05,
+        "06": day06,
+        }
+    
+    args = parse_args()
+    if selected_day:
+        days = [str(selected_day).zfill(2)]
+    elif args.day:
+        days = [str(d).zfill(2) for d in args.day]
+    else:
+        days = list(day_map.keys())
+
+    for day_number in days:
+        day_module = day_map.get(day_number)
+        if day_module is None:
+            raise ValueError(f"No module found for day {day_number}")
+            continue
+
         file_path = Path(f"./input/day{day_number}_input.txt")
         input_lines = helpers.parse_input(file_path)
 
